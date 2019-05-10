@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById('tutorial');
+
+            var playerBoxHeight = 40;
+            var playerBoxWidth = 120;
+            var playerBoxGap = 20;
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+                // for (var i = 0; i < 8; i++) {
+                //     ctx.strokeRect(20, i * (playerBoxHeight + playerBoxGap), playerBoxWidth, playerBoxHeight);
+                //     // ctx.fillText('Player', 10 + 10, i * 40 + 20);
+                // }    
+
+                // var levelTwoOffset = 2 * playerBoxHeight + 2 * playerBoxGap;
+                // for (var i = 0; i < 4; i++) {
+                //     ctx.strokeRect(160, i * levelTwoOffset + (playerBoxHeight + playerBoxGap) / 2, playerBoxWidth, playerBoxHeight);    
+                // }
+
+                // var levelThreeOffset = 4 * playerBoxHeight + 4 * playerBoxGap;
+                // for (var i = 0; i < 2; i++) {
+                //     ctx.strokeRect(300, i * levelThreeOffset + ((3 * playerBoxHeight) + (3 * playerBoxGap)) / 2, playerBoxWidth, playerBoxHeight);    
+                // }
+                // // ctx.strokeRect(300, ((3 * playerBoxHeight) + (3 * playerBoxGap)) / 2, playerBoxWidth, playerBoxHeight);    
+
+                // var levelFourOffset = 8 * playerBoxHeight + 8 * playerBoxGap;
+                // for (var i = 0; i < 1; i++) {
+                //     ctx.strokeRect(440, i * levelFourOffset + ((7 * playerBoxHeight) + (7 * playerBoxGap)) / 2, playerBoxWidth, playerBoxHeight);    
+                // }
+                drawTree(ctx, 4);
+
+            }
+        }
+
+        function drawTree(ctx, levels) {
+            var playerBoxHeight = 40;
+            var playerBoxWidth = 120;
+            var playerBoxGap = 20;
+
+            for (var i = 0; i < levels; i++) {
+                var numberNodes = Math.pow(2, levels - i - 1);
+                var offset = Math.pow(2, i) * (playerBoxHeight + playerBoxGap);
+                var horizontalBias = (i + 1) * playerBoxGap + i * playerBoxWidth;
+
+                for (var nodeIdx = 0; nodeIdx < numberNodes; nodeIdx++) {                    
+                    var verticalBias = ((Math.pow(2, i) - 1) * (playerBoxGap + playerBoxHeight)) / 2;
+                    ctx.strokeRect(
+                        horizontalBias,
+                        nodeIdx * offset + verticalBias,
+                        playerBoxWidth,
+                        playerBoxHeight
+                    );
+                }
+
+            }
+        }
+    </script>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body onload="draw();">
+    <canvas id="tutorial" width="800" height="800"></canvas>
+</body>
+
+</html>
