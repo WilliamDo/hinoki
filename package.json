@@ -1,0 +1,22 @@
+{
+  "name": "hinoki",
+  "version": "1.0.0",
+  "description": "library for rendering knock-out tournament trees",
+  "main": "tree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamDo/hinoki.git"
+  },
+  "author": "William Do",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WilliamDo/hinoki/issues"
+  },
+  "homepage": "https://github.com/WilliamDo/hinoki#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
